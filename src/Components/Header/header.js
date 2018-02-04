@@ -2,9 +2,8 @@ import React from "react";
 import "./header.css";
 
 const Header = () =>
-  <div>
-    {/* this will have the title for the game and instructions */}
-
+  <div className="header">
+    <h1>CLICKY GAME</h1>
   </div>
 
 

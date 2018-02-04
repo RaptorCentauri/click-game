@@ -1,10 +1,9 @@
 import React from "react";
 import "./card.css";
 
-const Card = () =>
-  <div>
-    {/* this will be each indivudual card */}
-
+const Card = props =>
+  <div className="card">
+    <img src={props.image} alt={props.name}/>
   </div>
 
 

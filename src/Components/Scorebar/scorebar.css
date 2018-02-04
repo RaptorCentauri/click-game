@@ -1,0 +1,7 @@
+.scorebar-style{
+  display: flex;
+  justify-content: space-between;
+  background-color: #0f80ff;
+  color: #ffffff;
+  padding: 0 20px;
+}

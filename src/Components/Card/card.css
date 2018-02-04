@@ -1,0 +1,7 @@
+.card{
+  margin: 15px;
+  width: 200px;
+  height: 200px;
+  border: solid 2px #fd8008;
+  /* background-image: url("../../Images/Joker.jpg"); */
+}
