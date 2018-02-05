@@ -4,22 +4,24 @@ import "./card.css";
 class Card extends React.Component{
 
   state = {
-    clicked: false
+    clicked: false,
   };
 
-  setClick = () => {
+  hasCardBeenClicked = () => {
     console.log(this.props.name);
     console.log(this.state.clicked);
-    this.state.clicked ? console.log("Already True") : this.setState({clicked:true});
-    console.log(this.props.score);
-    this.props.score++;
+    this.state.clicked ? this.props.gameOver() : this.setState({clicked:true}, this.props.updateScore());
+    // this.props.updateScore()
     console.log(`===================================`);
   };
 
 
+
+
+
   render(){
     return(
-      <div className="card" clicked={this.state.clicked.toString()} onClick={() => {this.setClick(); this.props.shuffleCards()}}>
+      <div className="card" clicked={this.state.clicked.toString()} onClick={() => {this.hasCardBeenClicked(); this.props.shuffleCards()}}>
         <img src={this.props.image} alt={this.props.name}/>
       </div>
     );

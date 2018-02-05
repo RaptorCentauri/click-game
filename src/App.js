@@ -27,13 +27,24 @@ class App extends Component {
     topscore: 0
   }
 
+  updateScore = (score) => this.setState({score: this.state.score+1});
+
+  gameOver = (score) => this.setState({score: 0});
+
   render() {
     return(
       <div>
         <Scorebar score={this.state.score} topscore={this.state.topscore}/>
         <Header />
         <GameBoard>
-          {images.map(i => <Card key={i.id} name={i.image} image={`/assets/Images/${i.image}`} shuffleCards={this.shuffleCards} score={this.state.score}/>)}
+          {images.map(i => <Card
+            key={i.id}
+            name={i.image}
+            image={`/assets/Images/${i.image}`}
+            shuffleCards={this.shuffleCards}
+            updateScore={this.updateScore.bind(this)}
+            gameOver={this.gameOver.bind(this)}
+            />)}
         </GameBoard>
       </div>
     )
