@@ -10,14 +10,16 @@ class Card extends React.Component{
   setClick = () => {
     console.log(this.props.name);
     console.log(this.state.clicked);
-
-    this.state.clicked ? console.log("Already True") : this.setState({clicked:true}) ;
+    this.state.clicked ? console.log("Already True") : this.setState({clicked:true});
+    console.log(this.props.score);
+    this.props.score++;
+    console.log(`===================================`);
   };
 
 
   render(){
     return(
-      <div className="card" clicked={this.state.clicked.toString()} onClick={() => {this.setClick(); this.props.handleClick()}}>
+      <div className="card" clicked={this.state.clicked.toString()} onClick={() => {this.setClick(); this.props.shuffleCards()}}>
         <img src={this.props.image} alt={this.props.name}/>
       </div>
     );
