@@ -17,21 +17,20 @@ shuffle(images);
 class GameBoard extends React.Component{
 
   state = {
+      // images,
       clicked: "false"
     };
 
-  handleClick = id => {
-    console.log(this.key);
-    console.log(this.state.clicked);
-    this.setState({clicked: "true"});
-    this.setState();
+  handleClick = () => {
+    shuffle(images)
+    this.setState(images);
   }
 
 
   render(){
     return(
       <div className="game-board">
-        {images.map(i => <Card key={i.id} name={i.image} image={`/assets/Images/${i.image}`} clicked={this.state.clicked} handleClick={this.handleClick}/>)}
+        {images.map(i => <Card key={i.id} name={i.image} image={`/assets/Images/${i.image}`} handleClick={this.handleClick}/>)}
       </div>
     )
   }
