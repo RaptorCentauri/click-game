@@ -4,14 +4,10 @@ import "./card.css";
 class Card extends React.Component{
 
   state = {
-    clicked: this.props.clicked,
+    clicked: this.props.newgame,
   };
 
   handleClick = () => {
-    console.log(this.props.name);
-    console.log(`PROPS: ${this.props.clicked}`);
-    console.log(`STATE: ${this.state.clicked}`);
-
     if (this.state.clicked){
       console.log(`state was already true`);
       this.props.gameOver()
@@ -21,7 +17,6 @@ class Card extends React.Component{
       this.props.updateScore();
       // this.props.shuffleCards();
     }
-    console.log(`===================================`);
   };
 
 
