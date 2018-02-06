@@ -12,7 +12,7 @@ class Scorebar extends React.Component {
     return(
       <div className="scorebar-style">
         <h3>Clicky Game</h3>
-        <h5><span>UserGuess</span></h5>
+        <h5>{this.props.clicked.toString()}</h5>
         <h5>Score: {this.props.score} | Top Score: {this.props.topscore}</h5>
       </div>
     );

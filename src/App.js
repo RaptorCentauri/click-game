@@ -24,7 +24,8 @@ class App extends Component {
 
   state = {
     score: 0,
-    topscore: 0
+    topscore: 0,
+    clicked: false
   }
 
 
@@ -36,12 +37,17 @@ class App extends Component {
     }
   };
 
-  gameOver = (score) => this.setState({score: 0});
+  gameOver = (score) => {
+    this.setState({score: 0});
+    this.setState({clicked: false});
+};
+
+  changeClick = (clicked) => this.setState({clicked});
 
   render() {
     return(
       <div>
-        <Scorebar score={this.state.score} topscore={this.state.topscore}/>
+        <Scorebar clicked={this.state.clicked} score={this.state.score} topscore={this.state.topscore}/>
         <Header />
         <GameBoard>
           {images.map(i => <Card
@@ -51,6 +57,8 @@ class App extends Component {
             shuffleCards={this.shuffleCards}
             updateScore={this.updateScore.bind(this)}
             gameOver={this.gameOver.bind(this)}
+            clicked={this.state.clicked}
+            changeClick={this.changeClick}
             />)}
         </GameBoard>
       </div>
