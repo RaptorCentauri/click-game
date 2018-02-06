@@ -27,7 +27,14 @@ class App extends Component {
     topscore: 0
   }
 
-  updateScore = (score) => this.setState({score: this.state.score+1});
+
+  updateScore = (score) => {
+    this.setState({score: this.state.score+1});
+
+    if (this.state.score >= this.state.topscore){
+      this.setState({topscore: this.state.topscore+1});
+    }
+  };
 
   gameOver = (score) => this.setState({score: 0});
 
