@@ -24,8 +24,31 @@ class App extends Component {
   state = {
     score: 0,
     topscore: 0,
-    newgame: false
+    clicked: {},
+    moveAlert: ""
   }
+
+
+  gameWin = () => {
+      if(this.state.score >= images.length-1){
+      this.setState({moveAlert: "YOU WON!"})
+    }
+  }
+
+  handleCardClick = (id) => {
+    //Good Move
+    if(!this.state.clicked[id]){
+      this.setState({clicked: Object.assign(this.state.clicked, {[id]: true}), moveAlert:"Good Move!"})
+      this.updateScore();
+      this.gameWin();
+      this.shuffleCards();
+    }
+
+    //Badmove
+    else {
+      this.setState({moveAlert: "Game Over!", score: 0, clicked:{}});
+    }
+  };
 
 
   updateScore = (score) => {
@@ -36,30 +59,20 @@ class App extends Component {
     }
   };
 
-  gameOver = (score) => {
-    this.setState({score: 0});
-    this.setState({clicked: false});
-};
-
-
-
-  changeClick = (newgame) => this.setState({newgame});
 
   render() {
     return(
       <div>
-        <Scorebar clicked={this.state.newgame} score={this.state.score} topscore={this.state.topscore}/>
+        <Scorebar moveAlert={this.state.moveAlert} score={this.state.score} topscore={this.state.topscore}/>
         <Header />
         <GameBoard>
           {images.map(i => <Card
             key={i.id}
             name={i.image}
+            wasClicked={this.state.clicked[i.id] ? true : false}
+            handleCardClick={() => { this.handleCardClick(i.id) }}
             image={`/assets/Images/${i.image}`}
-            shuffleCards={this.shuffleCards}
-            updateScore={this.updateScore.bind(this)}
-            gameOver={this.gameOver.bind(this)}
             newgame={this.state.newgame}
-            changeClick={this.changeClick}
             />)}
         </GameBoard>
       </div>
